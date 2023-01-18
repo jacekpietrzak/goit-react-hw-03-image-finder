@@ -10,7 +10,7 @@ import Modal from './Modal/Modal';
 class App extends Component {
   state = {
     images: [],
-    topic: 'cat',
+    topic: '',
     page: 1,
     totalHits: 500,
     perPage: 12,
@@ -62,14 +62,6 @@ class App extends Component {
     }
   };
 
-  componentDidMount() {
-    this.loadImages();
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.onKeyPress);
-  }
-
   handleFormSubmit = event => {
     event.preventDefault();
     this.loadImages();
@@ -113,7 +105,7 @@ class App extends Component {
     }
   };
 
-  handleCloseModal = event => {
+  handleCloseModal = () => {
     this.setState({
       showModal: false,
       imgAlt: '',
@@ -121,6 +113,10 @@ class App extends Component {
     });
     document.removeEventListener('keydown', this.onKeyPress);
   };
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKeyPress);
+  }
 
   render() {
     const {
@@ -141,7 +137,8 @@ class App extends Component {
         />
         <ImageGallery images={images} handleshowModal={this.handleshowModal} />
         <Loader isLoading={isLoading} />
-        {page * perPage < totalHits && (
+
+        {images.length > 0 && page * perPage < totalHits && (
           <Button
             buttonText={isLoading ? 'Loading...' : 'Load More'}
             handleLoadMore={this.handleLoadMore}
