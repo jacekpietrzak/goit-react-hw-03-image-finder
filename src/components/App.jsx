@@ -10,7 +10,7 @@ import Modal from './Modal/Modal';
 class App extends Component {
   state = {
     images: [],
-    topic: 'cat',
+    topic: '',
     page: 1,
     totalHits: 500,
     perPage: 12,
@@ -20,10 +20,6 @@ class App extends Component {
     imgLargeSrc: '',
     imgAlt: '',
   };
-
-  componentDidMount() {
-    this.loadImages();
-  }
 
   loadImages = async () => {
     this.setState({ isLoading: true });
