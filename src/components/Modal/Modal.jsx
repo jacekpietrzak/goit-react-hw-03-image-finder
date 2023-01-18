@@ -1,23 +1,28 @@
 import { Component } from 'react';
 import css from './Modal.module.css';
+import PropTypes from 'prop-types';
 
 class Modal extends Component {
   render() {
-    if (!this.props.showModal) {
+    const { showModal, onModalOverlayClick, imgAlt, imgLargeSrc } = this.props;
+    if (!showModal) {
       return null;
     }
     return (
-      <div
-        id="overlay"
-        onClick={this.props.onModalOverlayClick}
-        className={css.Overlay}
-      >
+      <div id="overlay" onClick={onModalOverlayClick} className={css.Overlay}>
         <div className={css.Modal}>
-          <img src={this.props.imgLargeSrc} alt={this.props.imgAlt} />
+          <img src={imgLargeSrc} alt={imgAlt} />
         </div>
       </div>
     );
   }
 }
+
+Modal.propTypes = {
+  imgAlt: PropTypes.string.isRequired,
+  imgLargeSrc: PropTypes.string.isRequired,
+  onModalOverlayClick: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
+};
 
 export default Modal;

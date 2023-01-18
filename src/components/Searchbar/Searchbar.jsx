@@ -1,11 +1,13 @@
 import { Component } from 'react';
 import css from './Searchbar.module.css';
+import PropTypes from 'prop-types';
 
 class Searchbar extends Component {
   render() {
+    const { onSubmit, handleInputChange } = this.props;
     return (
       <header className={css.Searchbar}>
-        <form onSubmit={this.props.onSubmit} className={css.SearchForm}>
+        <form onSubmit={onSubmit} className={css.SearchForm}>
           <button type="submit" className={css['SearchForm-button']}>
             <div className={css['SearchForm-button-label']}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -19,12 +21,17 @@ class Searchbar extends Component {
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            onChange={this.props.handleInputChange}
+            onChange={handleInputChange}
           />
         </form>
       </header>
     );
   }
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+};
 
 export default Searchbar;

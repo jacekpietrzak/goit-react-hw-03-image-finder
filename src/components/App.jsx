@@ -10,7 +10,7 @@ import Modal from './Modal/Modal';
 class App extends Component {
   state = {
     images: [],
-    topic: '',
+    topic: 'cat',
     page: 1,
     totalHits: 500,
     perPage: 12,
@@ -20,6 +20,10 @@ class App extends Component {
     imgLargeSrc: '',
     imgAlt: '',
   };
+
+  componentDidMount() {
+    this.loadImages();
+  }
 
   loadImages = async () => {
     this.setState({ isLoading: true });
@@ -147,7 +151,6 @@ class App extends Component {
         {showModal && (
           <Modal
             showModal={showModal}
-            handleshowModal={this.handleshowModal}
             onModalOverlayClick={this.onModalOverlayClick}
             imgAlt={imgAlt}
             imgLargeSrc={imgLargeSrc}

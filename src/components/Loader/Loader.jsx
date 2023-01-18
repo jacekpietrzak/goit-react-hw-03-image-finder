@@ -1,5 +1,6 @@
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import 'notiflix/dist/notiflix-aio-3.2.6.min.js';
+import PropTypes from 'prop-types';
 
 const Loader = ({ isLoading }) => {
   return isLoading
@@ -8,4 +9,9 @@ const Loader = ({ isLoading }) => {
       })
     : Loading.remove();
 };
+
+Loader.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+};
+
 export default Loader;

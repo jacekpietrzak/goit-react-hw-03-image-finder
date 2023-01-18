@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './ImageGalleryItem.module.css';
 
 const ImageGalleryItem = ({ imgSrc, imgLargeSrc, imgAlt, handleshowModal }) => {
@@ -12,6 +13,13 @@ const ImageGalleryItem = ({ imgSrc, imgLargeSrc, imgAlt, handleshowModal }) => {
       />
     </li>
   );
+};
+
+ImageGalleryItem.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  imgLargeSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  handleshowModal: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;

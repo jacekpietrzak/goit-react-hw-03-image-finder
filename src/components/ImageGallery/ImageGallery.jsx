@@ -1,5 +1,6 @@
-import css from './ImageGallery.module.css';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
+import PropTypes from 'prop-types';
+import css from './ImageGallery.module.css';
 
 const ImageGallery = ({ images, handleshowModal }) => {
   return (
@@ -18,6 +19,11 @@ const ImageGallery = ({ images, handleshowModal }) => {
         })}
     </ul>
   );
+};
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleshowModal: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './Button.module.css';
 
 const Button = ({ buttonText, handleLoadMore }) => {
@@ -6,6 +7,11 @@ const Button = ({ buttonText, handleLoadMore }) => {
       {buttonText}
     </button>
   );
+};
+
+Button.propTypes = {
+  buttonText: PropTypes.string.isRequired,
+  handleLoadMore: PropTypes.func.isRequired,
 };
 
 export default Button;
