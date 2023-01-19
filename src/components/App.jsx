@@ -83,7 +83,6 @@ class App extends Component {
   }
 
   handleshowModal = event => {
-    document.addEventListener('keydown', this.onKeyPress);
     const imgAlt = event.target.alt;
     const imgLargeSrc = event.target.srcset;
     this.setState({
@@ -93,30 +92,13 @@ class App extends Component {
     });
   };
 
-  onModalOverlayClick = event => {
-    if (event.target.id === 'overlay') {
-      this.handleCloseModal();
-    }
-  };
-
-  onKeyPress = event => {
-    if (event.keyCode === 27) {
-      this.handleCloseModal();
-    }
-  };
-
-  handleCloseModal = () => {
+  onModalClose = () => {
     this.setState({
       showModal: false,
       imgAlt: '',
       imgLargeSrc: '',
     });
-    document.removeEventListener('keydown', this.onKeyPress);
   };
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.onKeyPress);
-  }
 
   render() {
     const {
@@ -146,10 +128,12 @@ class App extends Component {
         )}
         {showModal && (
           <Modal
-            showModal={showModal}
-            onModalOverlayClick={this.onModalOverlayClick}
+            // showModal={showModal}
+            // onModalOverlayClick={this.onModalOverlayClick}
             imgAlt={imgAlt}
             imgLargeSrc={imgLargeSrc}
+            onKeyPress={this.onKeyPress}
+            onModalClose={this.onModalClose}
           />
         )}
       </div>

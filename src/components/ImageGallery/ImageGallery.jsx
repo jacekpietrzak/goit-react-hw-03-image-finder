@@ -22,7 +22,14 @@ const ImageGallery = ({ images, handleshowModal }) => {
 };
 
 ImageGallery.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ),
   handleshowModal: PropTypes.func.isRequired,
 };
 
