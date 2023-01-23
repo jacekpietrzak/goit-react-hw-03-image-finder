@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { fetchImages } from './Services/Api';
+import { fetchImages } from '../Services/Api';
 import css from './App.module.css';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -128,8 +128,6 @@ class App extends Component {
         )}
         {showModal && (
           <Modal
-            // showModal={showModal}
-            // onModalOverlayClick={this.onModalOverlayClick}
             imgAlt={imgAlt}
             imgLargeSrc={imgLargeSrc}
             onKeyPress={this.onKeyPress}

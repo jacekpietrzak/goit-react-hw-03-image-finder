@@ -13,10 +13,8 @@ class Modal extends Component {
     }
   };
 
-  onModalOverlayClick = event => {
-    if (event.target.id === 'overlay') {
-      this.handleCloseModal();
-    }
+  onModalOverlayClick = () => {
+    this.handleCloseModal();
   };
 
   handleCloseModal = () => {
@@ -28,15 +26,16 @@ class Modal extends Component {
     const { imgAlt, imgLargeSrc } = this.props;
 
     return (
-      <div
-        id="overlay"
-        onClick={this.onModalOverlayClick}
-        className={css.Overlay}
-      >
-        <div className={css.Modal}>
-          <img src={imgLargeSrc} alt={imgAlt} />
+      <>
+        <div
+          id="overlay"
+          onClick={this.onModalOverlayClick}
+          className={css.Overlay}
+        ></div>
+        <div>
+          <img className={css.Modal} src={imgLargeSrc} alt={imgAlt} />
         </div>
-      </div>
+      </>
     );
   }
 }
